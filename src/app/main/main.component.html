@@ -1,0 +1,56 @@
+<div class="container">
+  <!-- <div>
+      <input
+        class="search-input"
+        [(ngModel)]="searchInput"
+        placeholder="검색하세요."
+      >
+  </div> -->
+  <div class="newTodoContainer">
+    <input #newTodo 
+      class="input"
+      placeholder="할 일을 입력하세요."
+      (keydown.enter)="add(newTodo.value)"
+      [(ngModel)]="searchInput"
+    >
+    <button class="addBtn" 
+      mat-icon-button 
+      (click)="add(newTodo.value); newTodo.value = '';"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div fxLayout="row"
+    gdGap="10px"
+  >
+    <div class="todo-container"
+      *ngFor="let todo of todos; let i = index;" 
+      (click)="onSelect(todo)"
+      fxFlex
+    >
+      <div class="todo-due">
+        {{todo.due ? "날짜" : "기한 없음"}}
+      </div>
+      <div class="todo-work">
+        {{todo.work}}
+      </div>
+
+      <div class="button-container">
+        <div (click)="toggle(i);">
+          <div class="default" [class.done]="todo.done">
+            완료
+          </div>
+          <div class="default" [class.notDone]="!todo.done">
+            미완료
+          </div>
+        </div>
+
+        <div class="todoDelBtn" (click)="delete(i);">
+          삭제
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

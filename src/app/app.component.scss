@@ -1,0 +1,21 @@
+mat-toolbar {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(150%);
+
+  text-align: left;
+  font-family: "Inter";
+
+  position: fixed;
+  top: 0;
+
+  border-bottom: 0.05rem solid rgba(0, 0, 0, 0.2);
+
+  z-index: 999;
+}
+
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
