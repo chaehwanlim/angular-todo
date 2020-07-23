@@ -11,46 +11,53 @@ import { MessageService } from '../message.service';
 export class MainComponent implements OnInit {
 
   todos: Todo[];
+  filteredTodos: Todo[];
   searchInput: string;
+  todoInput: string;
+  todoDateInput: Date | null;
+  selectedTodo: Todo;
+  searchEnabled: boolean = false;
 
-  constructor(private todoService: TodoService, private messageService: MessageService) { }
+  constructor(
+    private todoService: TodoService, 
+    private messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
     this.getTodos();
   }
 
-  getTodos(): void {
-    this.todoService.getTodos()
-      .subscribe(todos => this.todos = todos);
+  filterTodos() {
+    if (this.searchInput === undefined || this.searchInput === '') {
+      return this.todos;
+    } else {
+      return this.todos.filter((todo) => todo.work.toLowerCase().includes(this.searchInput.toLowerCase()));
+    }
   }
 
-  selectedTodo: Todo;
+  getTodos(): void {
+    this.todoService.getTodos()
+      .subscribe(todos => {
+        this.todos = todos;
+      });
+  }
+
   onSelect(todo: Todo): void {
     this.selectedTodo = todo;
     this.messageService.add(`TodosComponent: Selected Todo | {todo.work}`);
-    console.log(todo.work);
   }
 
   clearSearch(): void {
     this.searchInput = '';
   }
 
-  add(newWork: string): void {
-    if (newWork.length === 0) {
+  add(): void {
+    if (this.todoInput.length === 0) {
       return;
     }
-    console.log('추가한다');
-
-    /* work = work.trim();
-    if(!work) return;
-
-    this.todoService.addTodo({ work } as Todo)
-      .subscribe(todo => {
-        this.todos.push(todo);
-      }) */
 
     const newTodo = {
-      work: newWork,
+      work: this.todoInput,
       due: null,
       done: false
     }
@@ -63,11 +70,17 @@ export class MainComponent implements OnInit {
   }
 
   edit(todo: Todo): void {
-    
+
   }
 
   delete(idx: number): void {
     this.todos.splice(idx, 1);
   }
 
+  clearAdd(): void {
+    this.todoInput = '';
+
+  }
+
 }
+

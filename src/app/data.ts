@@ -24,5 +24,10 @@ export const todos: Todo[] = [
     work: "MongoDB Structure Research",
     done: false,
     due: null
+  },
+  {
+    work: "Refactoring React Project",
+    done: false,
+    due: null
   }
 ];

@@ -3,7 +3,8 @@
   margin: 0 auto;
 
   padding: 10px;
-  margin-top: 55px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 mat-form-field {
@@ -11,7 +12,7 @@ mat-form-field {
   width: 100%;
 }
 
-.newTodoContainer {
+.bar-container {
   margin: 10px 0px;
 
   display: flex;
@@ -23,7 +24,7 @@ mat-form-field {
 .input {
   border-radius: 10px;
   background: white;
-  padding: 10px;
+  padding: 10px 20px;
   width: 100%;
   box-sizing: border-box;
 
@@ -31,7 +32,7 @@ mat-form-field {
   font-size: 1.1rem;
 }
 
-button.addBtn {
+button.addBtn, .clear-icon{
   margin-left: 10px;
   background: white;
   border-radius: 10px;
@@ -41,7 +42,7 @@ mat-icon {
   font-size: 18px;
 }
 
-.default, .todoDelBtn {
+.default, .todo-normal-btn, .todo-add-btn {
   font-size: 1rem;
   font-weight: 700;
   text-align: right;
@@ -55,7 +56,7 @@ mat-icon {
 
 }
 
-.done, .notDone, .todoDelBtn {
+.done, .notDone, .todo-normal-btn, .todo-add-btn {
   display: inline-block;
 }
 
@@ -75,18 +76,27 @@ mat-icon {
   }
 }
 
-.todoDelBtn {
+.todo-normal-btn {
   color: grey;
   border-radius: 10px;
   border: 0.35em grey;
+  background: #F2F2F4;
 
   &:hover {
     backdrop-filter: brightness(90%);
   }
 }
 
+.todo-add-btn {
+  background-color: #2255FF;
+
+  &:hover {
+    filter: saturate(70%);
+  }
+}
+
 .todo-container {
-  padding: 10px;
+  padding: 20px;
   width: 100%;
   height: 100%;
   display: inline-block;
@@ -94,9 +104,11 @@ mat-icon {
 
   background: white;
   border-radius: 10px;
+
+  word-break: break-all;
 }
 
-.todo-work {
+.todo-work, .todo-add-title {
   font-size: 1.3rem;
   font-weight: 700;
   margin-top: 5px;
@@ -114,4 +126,23 @@ mat-icon {
   justify-content: space-between;
 
   margin-top: 20px;
+}
+
+.modal-default {
+  display: none;
+}
+
+.modal-open {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(20px) brightness(80%);
+}
+
+.todo-input {
+  display: inline-block;
+  margin: 10px 0px;
+  background: #F2F2F4;
 }

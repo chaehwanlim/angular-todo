@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { DialogComponent } from './dialog/dialog.component';
 import { MessagesComponent } from './messages/messages.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -43,7 +42,8 @@ const materialModules = [
 
 @NgModule({
   imports: [...materialModules],
-  exports: [...materialModules]
+  exports: [...materialModules],
+  declarations: []
 })
 export class MaterialModule {};
 
@@ -51,7 +51,6 @@ export class MaterialModule {};
   declarations: [
     AppComponent,
     MainComponent,
-    DialogComponent,
     MessagesComponent
   ],
   imports: [
@@ -66,10 +65,10 @@ export class MaterialModule {};
     ),
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
   entryComponents: [
-    
+
   ]
 })
 export class AppModule { }

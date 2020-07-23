@@ -1,12 +1,14 @@
 mat-toolbar {
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(40px) saturate(150%);
 
   text-align: left;
   font-family: "Inter";
 
   position: fixed;
   top: 0;
+
+  height: 50px;
 
   border-bottom: 0.05rem solid rgba(0, 0, 0, 0.2);
 

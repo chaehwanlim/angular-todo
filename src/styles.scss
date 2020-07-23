@@ -55,10 +55,6 @@ mat-grid-tile .mat-figure{
   flex-direction: flex-start;
 }
 
-input {
-  @include font;
-}
-
-button {
+input, button, div {
   @include font;
 }
